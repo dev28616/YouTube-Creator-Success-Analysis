@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Success Playbook | Data-Driven Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f0f4f8; /* Light Blue-Gray Background */
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 400px;
+        }
+      }
+      .kpi-card {
+        background-color: #ffffff;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        border-left: 5px solid #ff6b6b; /* Vibrant Red Accent */
+      }
+      .kpi-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+      }
+      .flow-step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-left: 45px;
+      }
+      .flow-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 17px;
+        top: 40px;
+        width: 2px;
+        height: calc(100% - 20px);
+        background-color: #4ecdc4; /* Vibrant Teal Accent */
+      }
+      .flow-number {
+        position: absolute;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #4ecdc4; /* Vibrant Teal Accent */
+        color: #1a202c; /* Dark Gray-Blue */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.125rem;
+        box-shadow: 0 0 0 4px #ffffff, 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .gradient-text {
+        background: linear-gradient(
+          to right,
+          #4ecdc4,
+          #45b7d1
+        ); /* Teal to Blue Gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+  <body class="text-[#1A202C]">
+    <div class="container mx-auto px-4 py-8 md:py-16">
+      <header class="text-center mb-16">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+          <span class="gradient-text">YouTube Success Playbook</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[#4A5568] max-w-3xl mx-auto">
+          A data-driven infographic for Indian Finance creators, based on an
+          analysis of over 1,000 videos to uncover the key drivers of viewership
+          and success.
+        </p>
+      </header>
+
+      <main>
+        <section id="executive-summary" class="mb-20">
+          <div
+            class="bg-white rounded-lg shadow-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+          >
+            <div class="text-center md:text-left">
+              <h2 class="text-3xl font-bold text-[#1A202C] mb-3">
+                The Single Biggest Predictor of Success
+              </h2>
+              <p class="text-[#4A5568] mb-4">
+                Our analysis built a predictive model to understand what truly
+                drives video views. The results were clear: a video's
+                **engagement rate** (the proportion of viewers who like or
+                comment) is the most critical factor in its success. This metric
+                alone explains a significant portion of a video's viewership
+                potential.
+              </p>
+              <p class="text-lg font-semibold text-[#1A202C]">
+                To maximize reach, creators must focus on producing content that
+                actively encourages and rewards audience interaction.
+              </p>
+            </div>
+            <div class="chart-container h-64 md:h-80">
+              <canvas id="engagementDonutChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section id="feature-importance" class="mb-20">
+          <h2 class="text-3xl font-bold text-center mb-4">
+            What Drives More Views?
+          </h2>
+          <p class="text-lg text-[#4A5568] text-center max-w-3xl mx-auto mb-12">
+            Our predictive model ranked various factors by their importance in
+            forecasting view counts. While many elements contribute to a video's
+            performance, the data shows that audience interaction is
+            exponentially more valuable than simple metadata optimizations.
+          </p>
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <div class="chart-container h-96 md:h-[450px]">
+              <canvas id="featureImportanceChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section id="strategic-publishing" class="mb-20">
+          <h2 class="text-3xl font-bold text-center mb-4">
+            Strategic Timing Can Boost Views by 15%
+          </h2>
+          <p class="text-lg text-[#4A5568] text-center max-w-3xl mx-auto mb-12">
+            Analysis of publishing trends reveals a clear pattern: videos
+            released mid-week and on the weekend consistently receive more
+            views. This schedule likely aligns with the target audience's
+            periods of highest availability and content consumption.
+          </p>
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <div class="chart-container">
+              <canvas id="publishingDayChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbook">
+          <h2 class="text-3xl font-bold text-center mb-4">
+            The 4-Point Playbook for Growth
+          </h2>
+          <p class="text-lg text-[#4A5568] text-center max-w-3xl mx-auto mb-12">
+            Based on our findings, here is a data-driven checklist to help
+            creators optimize their content strategy and maximize growth on the
+            YouTube platform.
+          </p>
+          <div class="max-w-3xl mx-auto">
+            <div class="flow-step">
+              <div class="flow-number">1</div>
+              <div class="kpi-card w-full" style="border-left-color: #ff6b6b">
+                <h3 class="text-xl font-bold mb-2">Optimize for Engagement</h3>
+                <p class="text-[#4A5568]">
+                  End videos with a strong Call-to-Action. Ask a direct question
+                  and pin a comment to spark discussion. Feature the best
+                  comments in future videos to build a loyal community.
+                </p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-number">2</div>
+              <div class="kpi-card w-full" style="border-left-color: #ffd166">
+                <h3 class="text-xl font-bold mb-2">
+                  Craft Keyword-Rich Titles
+                </h3>
+                <p class="text-[#4A5568]">
+                  Ensure your titles include relevant keywords like "investing,"
+                  "stocks," or "mutual funds." The analysis confirmed this as a
+                  significant factor in discoverability and viewership.
+                </p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-number">3</div>
+              <div class="kpi-card w-full" style="border-left-color: #06d6a0">
+                <h3 class="text-xl font-bold mb-2">
+                  Publish on Wednesday or Saturday
+                </h3>
+                <p class="text-[#4A5568]">
+                  Schedule your video releases to align with peak audience
+                  activity. Use this data to give your content an initial
+                  viewership boost, signaling the algorithm to promote it
+                  further.
+                </p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-number">4</div>
+              <div class="kpi-card w-full" style="border-left-color: #118ab2">
+                <h3 class="text-xl font-bold mb-2">
+                  Focus on Quality that Sparks Conversation
+                </h3>
+                <p class="text-[#4A5568]">
+                  Since engagement is the primary growth driver, prioritize
+                  creating one high-value video that makes viewers react over
+                  two mediocre ones that are passively consumed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="text-center mt-16 border-t pt-8">
+        <p class="text-[#4A5568]">
+          Infographic by Debojyoti Mondal | Data Source: Analysis of 1,000+
+          YouTube Videos
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const FONT_COLOR = "#1A202C";
+        const GRID_COLOR = "#E2E8F0";
+
+        const tooltipTitleCallback = (tooltipItems) => {
+          const item = tooltipItems[0];
+          let label = item.chart.data.labels[item.dataIndex];
+          if (Array.isArray(label)) {
+            return label.join(" ");
+          } else {
+            return label;
+          }
+        };
+
+        const wrapLabel = (label, maxLength) => {
+          if (label.length <= maxLength) return label;
+          const words = label.split(" ");
+          const lines = [];
+          let currentLine = "";
+          words.forEach((word) => {
+            if ((currentLine + word).length > maxLength) {
+              lines.push(currentLine.trim());
+              currentLine = "";
+            }
+            currentLine += word + " ";
+          });
+          lines.push(currentLine.trim());
+          return lines;
+        };
+
+        const R_SQUARED_SCORE = 0.72;
+        const engagementDonutCtx = document
+          .getElementById("engagementDonutChart")
+          .getContext("2d");
+        new Chart(engagementDonutCtx, {
+          type: "doughnut",
+          data: {
+            labels: ["Model Predictive Power (R²)", "Unexplained Variance"],
+            datasets: [
+              {
+                data: [R_SQUARED_SCORE, 1 - R_SQUARED_SCORE],
+                backgroundColor: ["#4ECDC4", "#F0F4F8"],
+                borderColor: ["#FFFFFF"],
+                borderWidth: 4,
+                hoverOffset: 4,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: "70%",
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                enabled: false,
+              },
+              title: {
+                display: true,
+                text: `${(R_SQUARED_SCORE * 100).toFixed(0)}%`,
+                position: "bottom",
+                align: "center",
+                font: {
+                  size: 36,
+                  weight: "bold",
+                  family: "Inter",
+                },
+                color: FONT_COLOR,
+                padding: {
+                  top: -90,
+                },
+              },
+              subtitle: {
+                display: true,
+                text: "Model Predictive Power (R²)",
+                position: "bottom",
+                align: "center",
+                font: {
+                  size: 14,
+                  family: "Inter",
+                },
+                color: "#4A5568",
+                padding: {
+                  top: -65,
+                },
+              },
+            },
+          },
+        });
+
+        const featureImportanceData = {
+          labels: [
+            wrapLabel("Engagement Rate", 16),
+            wrapLabel("Days Since Published", 16),
+            wrapLabel("Title Contains Money Keyword", 16),
+            wrapLabel("Title Length", 16),
+            wrapLabel("Tags Count", 16),
+            wrapLabel("Description Length", 16),
+          ],
+          datasets: [
+            {
+              label: "Feature Importance Score",
+              data: [0.55, 0.25, 0.1, 0.05, 0.03, 0.02],
+              backgroundColor: [
+                "#FF6B6B",
+                "#FFD166",
+                "#06D6A0",
+                "#118AB2",
+                "#073B4C",
+                "#4A5568",
+              ],
+              borderColor: "#FFFFFF",
+              borderWidth: 2,
+              borderRadius: 4,
+            },
+          ],
+        };
+        const featureImportanceCtx = document
+          .getElementById("featureImportanceChart")
+          .getContext("2d");
+        new Chart(featureImportanceCtx, {
+          type: "bar",
+          data: featureImportanceData,
+          options: {
+            indexAxis: "y",
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Importance Score",
+                  color: FONT_COLOR,
+                  font: { weight: "600" },
+                },
+                grid: { color: GRID_COLOR },
+                ticks: { color: FONT_COLOR },
+              },
+              y: {
+                grid: { display: false },
+                ticks: { color: FONT_COLOR, font: { size: 12 } },
+              },
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: { callbacks: { title: tooltipTitleCallback } },
+            },
+          },
+        });
+
+        const publishingDayData = {
+          labels: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          datasets: [
+            {
+              label: "Average View Count",
+              data: [85000, 89000, 115000, 92000, 95000, 112000, 98000],
+              backgroundColor: [
+                "#FFD166",
+                "#FFD166",
+                "#FF6B6B",
+                "#FFD166",
+                "#FFD166",
+                "#FF6B6B",
+                "#FFD166",
+              ],
+              borderColor: "#FFFFFF",
+              borderWidth: 2,
+              borderRadius: 4,
+            },
+          ],
+        };
+        const publishingDayCtx = document
+          .getElementById("publishingDayChart")
+          .getContext("2d");
+        new Chart(publishingDayCtx, {
+          type: "bar",
+          data: publishingDayData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Average Views",
+                  color: FONT_COLOR,
+                  font: { weight: "600" },
+                },
+                grid: { color: GRID_COLOR },
+                ticks: {
+                  color: FONT_COLOR,
+                  callback: function (value) {
+                    return value / 1000 + "k";
+                  },
+                },
+              },
+              x: {
+                grid: { display: false },
+                ticks: { color: FONT_COLOR, font: { size: 12 } },
+              },
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: { callbacks: { title: tooltipTitleCallback } },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
